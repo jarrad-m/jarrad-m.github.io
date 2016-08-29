@@ -368,7 +368,8 @@ footer.wrapper {
 	width: 33%;
 	float: right;
 	padding: 0;	
-	margin: 0 auto;
+	margin: 0 auto;\
+
 }
 
 .col ul {
@@ -390,7 +391,84 @@ section > h2 , #skills-section > div > h2{
 }	
 
 footer a:hover {
-	font-weight: bold;
+	
 	color: white;
 }
+
+/** Media Queries **/
+
+/** Tablet **/
+
+@media (max-width: 768px) {
+
+	header {
+		position: fixed;
+		display: inline-block;
+		width: 100%;
+		
+	}
+
+	header nav ul {
+		margin: 0px;
+		padding: 0;
+		float: left;
+	}
+
+	h1.logo {
+		display: none; 
+		width: 0px;
+	}
+
+	#main-banner {
+		padding-top: 120px;
+		height: 100vh;
+		font-size: 0.8em;
+	}
+
+	.skills-logo-container {
+	float: left;
+	width: 46%;
+	
+	}
+
+	.project-info {
+		width: 92%;
+	}
+
+	.project-image-container {
+		width: 92%;
+	}
+
+	
+}
+
+@media (max-width: 480px) {
+
+	header {
+		font-size: 0.85em;
+	}
+
+	#main-banner {
+		font-size: 0.7em;
+	}
+	footer {
+		padding-bottom: 10px;
+	}
+
+	footer ul {
+		text-align: center;
+		padding: 0;
+	}
+	
+	.col {
+		width: 100%;
+		font-size: 0.9em;
+		padding-right: 0%;
+
+	}
+
+	
+
+}
+
 
