@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="key, words">
+    <meta name="description" content="description">
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+   <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://v4-alpha.getbootstrap.com/assets/css/docs.min.css">
+
+    <!-- <base href="/"> -->
+
+
+
+</head>
+<body ng-app="leangainsApp" ng-controller="calculatorController">
+	<div class="container">
+		<div class="row" >
+			<div class="col-sm-12 col-md-5 col-md-offset-1" style="background: pink; border-radius: 10px; box-shadow: 3px 3px 3px #888888">
+				
+				Click me to toggle Metric/Imperial: <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow"><br/>
+				<div ng-show="checked"> 
+					<h1>Metric Measurements</h1>
+
+					<form role="form">
+						<div class="form-group">
+						    <label for="height">Height:</label>
+						    <input type="number" ng-change="updateCalcs()" class="form-control"  ng-model="subjectHeight">
+					  	</div>
+					  	<div class="form-group">
+						    <label for="pwd">Weight:</label>
+						    <input type="number" ng-change="updateCalcs()"  class="form-control"  ng-model="mass">
+					  	</div>
+					  	<div class="form-group">
+						    <label for="pwd">Age:</label>
+						    <input type="number"  ng-change="updateCalcs()"  class="form-control" ng-model="age">
+					  	</div>
+
+					  	<div class="form-group">
+							<label for="sel1">Select list:</label>
+							<select class="form-control" id="sel1" ng-model="activityFactor" ng-change="updateCalcs()">
+						    <option selected value="1.1">Sedentary</option>
+						    <option value="1.3">Lightly Active</option>
+						    <option value="1.5">Moderately Active</option>
+						    <option value="1.7">Very Active</option>
+						    <option value="1.9">Extremely Active</option>
+							</select>
+						</div>
+					</form>
+				</div>
+				
+				<div ng-hide="checked">
+					<h1>Imperial Measurements</h1>
+
+					<form role="form">
+						<div class="form-group">
+						    <label for="height">Height:</label>
+						    <input type="number" ng-change="convertToMetric()" class="form-control"  ng-model="impHeight">
+					  	</div>
+					  	<div class="form-group">
+						    <label for="pwd">Weight:</label>
+						    <input type="number" ng-change="convertToMetric()"  class="form-control"  ng-model="impMass">
+					  	</div>
+					  	<div class="form-group">
+						    <label for="pwd">Age:</label>
+						    <input type="number"  ng-change="updateCalcs()"  class="form-control" ng-model="age">
+					  	</div>
+
+					  	<div class="form-group">
+							<label for="sel1">Select list:</label>
+							<select class="form-control" id="sel1" ng-model="activityFactor" ng-change="updateCalcs()">
+						    <option selected value="1.1">Sedentary</option>
+						    <option value="1.3">Lightly Active</option>
+						    <option value="1.5">Moderately Active</option>
+						    <option value="1.7">Very Active</option>
+						    <option value="1.9">Extremely Active</option>
+							</select>
+						</div>
+					</form>
+				</div>
+
+
+				<h2>Gender</h2>
+				<div class="radio">
+  					<label><input type="radio" ng-click="setGender('male')" name="optradio">Male</label>
+				</div>
+				<div class="radio">
+				  	<label><input type="radio" ng-click="setGender('female')" name="optradio">Female</label>
+				</div>
+				
+				<!-- divider -->
+				<hr>
+
+				<form role="form">
+				  	<div class="form-group">
+					    <label for="pwd">Waist</label>
+					    <input type="number" ng-model="waist" class="form-control" id="pwd" ng-change="updateCalcs()">
+				  	</div>
+				 </form>
+
+
+
+
+
+
+
+			</div>
+
+
+
+			<div class="col-sm-12 col-md-5 col-md-offset-1">
+				<div class="row" style="background: Cornflowerblue; border-radius: 10px; box-shadow: 3px 3px 3px #888888" ng-model="calcMethod">
+					<div class="col-sm-8">
+						<h2>BMR</h2>
+
+						<div class="radio">
+  							<label><input type="radio" name="optradio" ng-click="setCalcMethod('Miffin-St Jeor')">Miffin-St Jeor formula</label>
+						</div>
+						<div class="radio">
+						  	<label><input type="radio" name="optradio" ng-click="setCalcMethod('Harris-Benedict')">Harris-Benedict Formula</label>
+						</div>
+						<div class="radio">
+		  					<label><input type="radio" name="optradio">Average</label>
+						</div>
+						<div class="radio">
+						  	<label><input type="radio" name="optradio">Simple Multiplier</label>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<h2 class="pull-right" ng-model="bmr">{{bmr | number:0}}cals</h2>
+					</div>
+				</div>
+				<br>
+				<div class="row" style="background: Lavender; border-radius: 10px; box-shadow: 3px 3px 3px #888888">
+					<div class="col-sm-8">
+						<h2>TDEE</h2>
+
+						<div class="radio">
+  							<label><input type="radio" name="optradio2">Calculated</label>
+						</div>
+						<div class="radio">
+						  	<label><input type="radio" name="optradio2">Simple Multiplier</label>
+						</div>
+						<div class="radio">
+		  					<label><input type="radio" name="optradio2">Custom</label>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<h2 class="pull-right" ng-model="tdee">{{tdee | number:0	}}cals</h2>
+					</div>
+				</div>
+				<br>
+
+				<div class="row" style="background: lightblue; border-radius: 10px; box-shadow: 3px 3px 3px #888888">
+					<div class="col-md-8">
+						<h2>Body-fat Percentage</h2>						
+					</div>
+					<div class="col-md-4">
+						<h2 class="pull-right">{{bodyfatPer | number:1 }}%</h2>						
+					</div>
+
+					<div class="col-md-8">
+						<h2>Lean Body Mass</h2>
+					</div>
+					<div class="col-md-4">						
+						<h2 class="pull-right">{{leanBodyMass | number:1 }}kgs</h2>
+					</div><div class="col-md-8">
+						<h2>Fat Body Mass</h2>
+					</div>
+					<div class="col-md-4">						
+						<h2 class="pull-right">{{fatBodyMass | number:1 }}kgs</h2>
+					</div>
+				</div>
+				<br>
+
+				<div class="row" style="background: Moccasin; border-radius: 10px; box-shadow: 3px 3px 3px #888888">
+					<div class="col-md-8">
+						
+
+						<h2>BMI</h2>
+					</div>
+					<div class="col-md-4">
+						
+						<h2 class="pull-right" ng-model="bmi">{{bmi | number:2}}</h2>
+					</div>
+				</div>
+				<br>
+
+			
+
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+
+	<script src="app.js"></script>
+
+
+</body>
+</html>

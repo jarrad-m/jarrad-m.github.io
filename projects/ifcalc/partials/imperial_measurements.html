@@ -1,0 +1,29 @@
+<div>
+	<h1>Imperial Measurements</h1>
+
+	<form role="form">
+		<div class="form-group">
+		    <label for="height">Height:</label>
+		    <input type="number" ng-change="updateCalcs()" class="form-control"  ng-model="impHeight">
+	  	</div>
+	  	<div class="form-group">
+		    <label for="pwd">Weight:</label>
+		    <input type="number" ng-change="updateCalcs()"  class="form-control"  ng-model="impMass">
+	  	</div>
+	  	<div class="form-group">
+		    <label for="pwd">Age:</label>
+		    <input type="number"  ng-change="updateCalcs()"  class="form-control" ng-model="age">
+	  	</div>
+
+	  	<div class="form-group">
+			<label for="sel1">Select list:</label>
+			<select class="form-control" id="sel1" ng-model="activityFactor" ng-change="updateCalcs()">
+		    <option selected value="1.1">Sedentary</option>
+		    <option value="1.3">Lightly Active</option>
+		    <option value="1.5">Moderately Active</option>
+		    <option value="1.7">Very Active</option>
+		    <option value="1.9">Extremely Active</option>
+			</select>
+	</div>
+	</form>
+</div>
