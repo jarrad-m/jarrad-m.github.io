@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-GB" ng-app="portfolioApp" ng-controller="languageController">
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="key, words">
@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet" type="text/css">
     <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+     <script src="app.js"></script>
    <title></title>
     
     
@@ -17,29 +20,33 @@
 
 		<header>
 			<div class="wrapper" id="header-color">
-				<h1 class="logo">Jarrad</h1>
+				<h1 class="logo">{{languageData.header_logo}}</h1>
 				<nav>
-					<h2>Main Navigation</h2>
+					<h2>{{languageData.header_nav}}</h2>
 					<ul>
-						<li><a href="#main-banner">Home</a></li>
-						<li><a href="#skills-section">About</a></li>
-						<li><a href="#projects">Projects</a></li>
-						<li><a href="#contact-me">Contact</a></li>
+						<li><a href="#main-banner">{{languageData.header_nav_home}}</a></li>
+						<li><a href="#skills-section">{{languageData.header_nav_about}}</a></li>
+						<li><a href="#projects">{{languageData.header_nav_projects}}</a></li>
+						<li><a href="#contact-me">{{languageData.header_nav_contact}}</a></li>
 					</ul>
 				</nav>
 			</div>
 		</header>
 
 		<div id="main-banner">
-			<h1>Jarrad M</h1>
-			<h1>Web Developer</h1>
+			<h1>{{languageData.main_banner_header}}</h1>
+			<img src="images/JJ2.png" alt="its a me, JJ">
+
+			<h1 ng-style="defaultLanguage === 'Japanese' ? {'font-size' : '0.75em'} : {'font-size' : '1em' }">{{languageData.main_banner_header_blurb}}</h1>
+			<button ng-click="changeLanguage()">{{switchedLanguage}}</button>
+			
 			<a href="#skills-section"><i class="fa fa-chevron-circle-down fa-4x" aria-hidden="true"></i></a>
 			<!-- <img src="images/banner.jpg" alt="Welcome to Jarrad's Portfolio"> -->
 		</div>
 
 		<section id="skills-section" class="wrapper">
 			<div class="wrapper">
-				<h2>Assorted Skills</h2>
+				<h2 ng-class="className()">{{languageData.skills_section_header}}</h2>
 				
 				<div class="skills-logo-container">
 					<div class="logo-container">
@@ -100,9 +107,9 @@
 
 		<!-- begin Projects section -->
 
-		<section id="projects" class="wrapper">
+		<section id="projects" class="wrapper" ng-class="">
 			
-				<h2>Projects</h2>
+				<h2>{{languageData.projects_section_header}}</h2>
 				<hr></hr>
 		
 				<!-- Begin Project 1 -->
@@ -128,7 +135,7 @@
 						-->
 						<div class="link-buttons">
 							<ul>
-								<li><a href="projects/ifcalc">Visit site</a></li>
+								<li><a href="projects/ifcalc" ng-style="defaultLanguage === 'Japanese' ? {'font-size' : '0.75em'} : {'font-size' : '1em' }">{{languageData.projects_section_goto_button}}</a></li>
 								<li><a href="#">Github</a></li>
 							</ul>	
 						</div>
@@ -159,7 +166,7 @@
 						-->
 						<div class="link-buttons">
 							<ul>
-								<li><a href="projects/securexredo">Visit site</a></li>
+								<li><a href="projects/securexredo">{{languageData.projects_section_goto_button}}</a></li>
 								<li><a href="#">Github</a></li>
 							</ul>	
 						</div>
@@ -190,7 +197,7 @@
 						-->
 						<div class="link-buttons">
 							<ul>
-								<li><a href="#">Visit site</a></li>
+								<li><a href="#">{{languageData.projects_section_goto_button}}</a></li>
 								<li><a href="#">Github</a></li>
 							</ul>	
 						</div>
@@ -204,7 +211,7 @@
 
 		<section id="contact-me" class="wrapper">
 			
-			<h2>Contact Me</h2>
+			<h2>{{languageData.contact_me_section_header}}</h2>
 
 			<form>
 				<input type="text" name="name" placeholder="name@address.com"><br>
@@ -246,7 +253,7 @@
 				<div class="col">
 					<ul>
 						<li><a href="https://github.com/jarrad-m"><i class="fa fa-github " aria-hidden="true"></i> Github</a></li>
-						<li><a href="mailto:jarrad.middleton@yahoo.com" title="Subject"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a></li>
+						<li><a href="mailto:jarrad.middleton@yahoo.com" title="Subject"><i class="fa fa-envelope" aria-hidden="true"></i>{{languageData.contact_me_section_email}}</a></li>
 						<li>&copy 2016 Jarrad M</li>
 					</ul>
 				</div>	

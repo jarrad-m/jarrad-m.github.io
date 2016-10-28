@@ -1,0 +1,20 @@
+{
+	"title": "title",
+	"header_logo" : "Jarrad",
+	"header_nav" : "Main Navigation",
+	"header_nav_home" : "Home",
+	"header_nav_about" : "About",
+	"header_nav_projects" : "Projects",
+	"header_nav_contact" : "Contact",
+
+	"main_banner_header" : "Jarrad M",
+	"main_banner_header_blurb" : "Web Developer",
+
+	"skills_section_header" : "Assorted Skills",
+
+	"projects_section_header" : "Projects",
+	"projects_section_goto_button" : "Visit site",
+
+	"contact_me_section_header" : "Contact me",
+	"contact_me_section_email": "Email" 
+}

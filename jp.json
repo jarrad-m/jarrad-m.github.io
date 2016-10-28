@@ -1,0 +1,20 @@
+{
+	"title": "title",
+	"header_logo" : "Jarrad",
+	"header_nav" : "Main Navigation",
+	"header_nav_home" : "ホーム",
+	"header_nav_about" : "Jarradについて",
+	"header_nav_projects" : "プロジェクト",
+	"header_nav_contact" : "お問い合わせ",
+
+	"main_banner_header" : "Jarrad",
+	"main_banner_header_blurb" : "ウェブ デベロッパー",
+
+	"skills_section_header" : "スキルズ",
+
+	"projects_section_header" : "プロジェクト",
+	"projects_section_goto_button" : "サイトへ",
+
+	"contact_me_section_header" : "お問い合わせ",
+	"contact_me_section_email": "メール" 
+}
