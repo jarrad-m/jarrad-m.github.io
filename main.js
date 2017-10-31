@@ -1,3 +1,9 @@
+
+
+AOS.init({
+	once: true
+}); // Initialise animation library
+
 $(document).ready(function(){
 	$('a[href^="#"]').on('click',function (e) {
 	    e.preventDefault();
