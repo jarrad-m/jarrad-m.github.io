@@ -301,16 +301,17 @@ header nav li a {
 
 .project-image-container {
 	float: left;
-	
 	width: 42%;
 	padding: 0;
 	margin: 20px 4% 20px 4%;
 	font-family: sans-serif;
 }
+
 .project-image-container div {
 	margin: 0 auto;
 	padding: 0px;
 }
+
 
 .project-image-container div img {
 	display: block;
@@ -318,6 +319,86 @@ header nav li a {
 	height: auto;
 }
 
+
+.slider {
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: 30vh;  
+  max-height: 200px;
+  overflow-y: hidden;
+}
+
+.container.slider .img-box {
+  max-height: 500px;
+  max-width: 500px;
+  flex: 1;
+  top: 50%;
+  align-self: center;  
+}
+
+.img-box img {
+  object-fit: contain
+  max-height: 100%;
+  max-width: 100%;
+}
+
+
+.slider > a {
+  display: inline-block;
+  padding-top: -40px;
+  margin-top: -40px;
+  height: 20px;
+  width: 50px;
+  background-color: black;
+} 
+
+.arrow {
+  flex: 1;  
+  color:transparent !important;
+  text-shadow:none !important;
+  border:none !important;
+  box-shadow:none !important;
+  position: absolute;
+  border-radius: 3px;
+  z-index: 1002;  
+  top: 50%;
+  margin-top: -35px;
+  width: 36px;
+  height: 71px;
+  outline: none;
+  cursor: pointer;
+  background: url(../assets/img/blank.gif) no-repeat;
+}
+
+.arrow.prev {
+  opacity: .3;
+  left: 10px;
+  background-image: url(images/paddle_prev.png);
+  transition: 0.2s linear all;
+}
+
+.arrow.prev:hover {
+  opacity: 1;
+  background-color: rgba(191, 57, 135, 0.8);  
+  background-image: url(images/paddle_prev_w.png);
+}
+
+.arrow.next {
+  opacity: .3;
+  text-align: right;
+  right: 10px;
+  background-image: url(images/paddle_next.png);
+  transition: 0.2s linear all;
+}
+
+.arrow.next:hover {
+  opacity: 1; 
+  background-color: rgba(191, 57, 135, 0.8);  
+  background-image: url(images/paddle_next_w.png);
+
+}
 
 .image-buttons {
 
@@ -472,6 +553,10 @@ footer {
 footer.wrapper {
 	padding: 0;
 
+}
+
+footer li, footer a {
+	color: #e7e7e7;
 }
 
 .col{
@@ -654,7 +739,7 @@ span.highlight {
 
 	#main-banner {
 		padding-top: 120px;
-		height: 100vh;
+		height: 80vh;
 		font-size: 0.8em;
 	}
 
@@ -677,6 +762,11 @@ span.highlight {
 }
 
 @media (max-width: 480px) {
+
+	.wrapper, section, #projects {
+		width: 95%;
+		margin: 0 auto;
+	}
 
 	header {
 		font-size: 0.85em;

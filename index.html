@@ -197,7 +197,7 @@
 			
 				<h2><span class="highlight">{{languageData.projects_section_header}}</span></h2>
 				
-				<li ng-repeat="project in projects">
+				<li ng-repeat="project in projects" ng-controller="slidesController" >
 					<hr>
 					<div class="project-container" data-aos="fade-in">
 						<div class="project-info">
@@ -207,9 +207,13 @@
 							<p>{{project.summary}}</p>
 						</div>
 						<div class="project-image-container">
-							<div ng-repeat="img in project.img_href">
-								<img ng-src="{{img}}">
-							</div>
+							<div class="slider">
+								<div  class="img-box" ng-repeat="img in project.img_href">
+									<img ng-src="{{img}}" ng-hide="!isCurrentSlideIndex($index)">
+								</div>
+								<button ng-show="hasMultipleImages()" class="arrow prev" href="#" ng-click="nextSlide()"></button>
+	    						<button ng-show="hasMultipleImages()" class="arrow next" href="#" ng-click="prevSlide()"></button>
+							</div>	
 							<!--
 							<div class="image-buttons">
 								<ul>
@@ -237,26 +241,71 @@
 		<section id="contact-me" class="wrapper">
 			
 			<h2><span class="highlight">{{languageData.contact_me_section_header}}</span></h2>
+			
+			<!-- Begin Encrypted Form -->
+			
+			<script type="text/javascript">
+				//<![CDATA[
+				<!--
+				var x="function f(x){var i,o=\"\",l=x.length;for(i=l-1;i>=0;i--) {try{o+=x.c" +
+				"harAt(i);}catch(e){}}return o;}f(\")\\\"function f(x,y){var i,o=\\\"\\\\\\\""+
+				"\\\\,l=x.length;for(i=0;i<l;i++){if(i==43)y+=i;y%=127;o+=String.fromCharCod" +
+				"e(x.charCodeAt(i)^(y++));}return o;}f(\\\"\\\\OCN[BU_F\\\\\\\\035CG_C]UT\\\\"+
+				"\\\\023\\\\\\\\036\\\\\\\\001XP2,b\\\\\\\\\\\"\\\\'1/(&t\\\\\\\\026i$9:?#k}" +
+				"|2:pnwutbm'cd#go}bpv=y|rst|ntr]g~HNM\\\\\\\\rGJK{\\\\\\\\n\\\\\\\\tGNXEAK\\" +
+				"\\\\\\rm\\\\\\\\020c{fbk\\\\\\\\032\\\\\\\\007fI`SbK\\\\\\\\0345\\\\\\\\036" +
+				"7\\\\\\\\0301z#!?j( ,=<m\\\\\\\\rp::%##\\\\\\\\004{d\\\\\\\\007.\\\\\\\\001" +
+				"0\\\\\\\\003\\\\\\\\024=\\\\\\\\026?\\\\\\\\0209\\\\\\\\022;\\\\\\\\034U\\\\"+
+				"\\\\003\\\\\\\\005\\\\\\\\034\\\\\\\\030\\\\\\\\032O\\\\\\\\004\\\\\\\\010\\"+
+				"\\\\\\002\\\\\\\\026I)T\\\\\\\\003\\\\\\\\035\\\\\\\\001\\\\\\\\016'^]\\\\\\"+
+				"\\020alg>X'hfelV),\\\\\\\\177k~ex`vp5f{yz\\\\\\\\177ssqzzR\\\\\\\\034~\\\\\\"+
+				"\\001x\\\\\\\\007\\\\\\\\030{ZuDwXqZsDmFo@\\\\\\\\tZVZ\\\\\\\\\\\\\\\\V\\\\" +
+				"\\\\033HDNZ}\\\\\\\\035`&)$/+\\\\\\\\024kt\\\\\\\\005- +s\\\\\\\\177=3119h\\"+
+				"\\\\\\013*\\\\\\\\0054\\\\\\\\007(\\\\\\\\001*\\\\\\\\003\\\\\\\\024=\\\\\\" +
+				"\\026_K\\\\\\\\001\\\\\\\\017\\\\\\\\021V5\\\\\\\\0307\\\\\\\\0021\\\\\\\\0" +
+				"343\\\\\\\\036-\\\\\\\\006/\\\\\\\\000)\\\\\\\\002+\\\\\\\\014E\\\\\\\\036\\"+
+				"\\\\\\022\\\\\\\\n]\\\\\\\\035l`qp9Y$nfy\\\\\\\\177\\\\\\\\177P/0SbM|O`IbKl" +
+				"EnGh!wqPTV\\\\\\\\003P\\\\\\\\\\\\\\\\VB\\\\\\\\025u\\\\\\\\010NALGCl\\\\\\" +
+				"\\023\\\\\\\\022]UXS\\\\\\\\nd\\\\\\\\033eIYMRF4.\\\\\\\\036ad7#6= 8.(m>#12" +
+				"7;;922*d\\\\\\\\006y\\\\\\\\000\\\\\\\\177`\\\\\\\\003\\\\\\\\022=\\\\\\\\0" +
+				"14?\\\\\\\\0209\\\\\\\\022;\\\\\\\\0345\\\\\\\\0367\\\\\\\\030Q\\\\\\\\002\\"+
+				"\\\\\\016\\\\\\\\022\\\\\\\\024\\\\\\\\036S\\\\\\\\000\\\\\\\\014\\\\\\\\00" +
+				"6\\\\\\\\022E%X\\\\\\\\036\\\\\\\\021\\\\\\\\034\\\\\\\\027l] =Ahgnd5%gmokc" +
+				".M`OzIbKlEnGh!1{IW\\\\\\\\034\\\\\\\\177VyH{ZuDwXqZsDmF\\\\\\\\017P\\\\\\\\" +
+				"\\\\\\\\@\\\\\\\\027[U[HO\\\\\\\\000b\\\\\\\\035)/260\\\\\\\\031dg!-w\\\\\\" +
+				"\\027n9+7$0 65\\\\\\\\tti\\\\\\\\004+\\\\\\\\0065\\\\\\\\000)\\\\\\\\002+<\\"+
+				"\\\\\\025>\\\\\\\\0278\\\\\\\\021Z\\\\\\\\023\\\\\\\\r\\\\\\\\021\\\\\\\\03" +
+				"6\\\\\\\\n\\\\\\\\036\\\\\\\\010\\\\\\\\017O\\\\\\\\036\\\\\\\\020\\\\\\\\0" +
+				"37\\\\\\\\026I)T\\\\\\\\024\\\\\\\\027\\\\\\\\027\\\\\\\\016\\\\\\\\032\\\\" +
+				"\\\\037\\\\\\\\tSmdqpebc[*)xn}xg}uu2cxturpvv\\\\\\\\177yo#C\\\\\\\\002}\\\\" +
+				"\\\\000\\\\\\\\003VJQT\\\\\\\\025u\\\\\\\\010\\\\\\\\036p\\\\\\\\017\\\\\\\\"+
+				"020\\\\\\\\023\\\\\\\\037EWK@TDRY\\\\\\\\007fI`SbK\\\\\\\\0345\\\\\\\\0367\\"+
+				"\\\\\\0301\\\\\\\\0323t%+))!n;)!7n\\\\\\\\010w3:906\\\\\\\\007~c\\\\\\\\007" +
+				"0\\\\\\\\025\\\\\\\\023B.\\\\\\\\001\\\\\\\\026\\\\\\\\025\\\\\\\\006\\\\\\" +
+				"\\017\\\\\\\\014VD\\\\\\\\000\\\\\\\\014\\\\\\\\014\\\\\\\\n\\\\\\\\034O.\\" +
+				"\\\\\\001(\\\\\\\\033*\\\\\\\\003$\\\\\\\\r&\\\\\\\\017 \\\\\\\\tB/eku:Yt[f" +
+				"U~WxQzSd-{}d`b7l`j~!A<wIEFFJy\\\\\\\\004\\\\\\\\007FHGN\\\\\\\\021q\\\\\\\\" +
+				"014p^TJGh\\\\\\\\027\\\\\\\\026AYUO^\\\\\\\\001a\\\\\\\\034\\\\\\\\034#.,7%" +
+				"&2j%,\\\\\\\\026ilbp\\\\\\\\023\\\\\\\\\\\"\\\\\\\\\\\\r<\\\\\\\\017 \\\\\\" +
+				"\\t\\\\\\\\\\\"\\\\\\\\\\\\013,\\\\\\\\005.g53.*\\\\\\\\024A\\\\\\\\026\\\\" +
+				"\\\\032\\\\\\\\024\\\\\\\\000[;J\\\\\\\\035\\\\\\\\017\\\\\\\\023\\\\\\\\03" +
+				"01LO\\\\\\\\036\\\\\\\\020\\\\\\\\037\\\\\\\\026I)T(\\\\\\\\037\\\\\\\\026\\"+
+				"\\\\\\016\\\\\\\\030\\\\\\\\024\\\\\\\\034\\\\\\\\\\\"\\\\\\\\\\\\\\\"\\\\!" +
+				"qw}ic:T+nb\\\\\\\\177}bni+||zpJ586$GnApCT}V\\\\\\\\177PyR\\\\\\\\033AGZ^X\\" +
+				"\\\\\\rZV@T\\\\\\\\017o\\\\\\\\026FCUUPNg\\\\\\\\036\\\\\\\\035]S!21~\\\\\\" +
+				"\\030g52*$#?a/;;$><\\\\\\\\017vu865<g\\\\\\\\007~.+=\\\\\\\\r\\\\\\\\010\\\\"+
+				"\\\\026?FE\\\\\\\\020\\\\\\\\006\\\\\\\\004\\\\\\\\034\\\\\\\\017V0O=\\\\\\" +
+				"\\n\\\\\\\\036\\\\\\\\025.QJ)\\\\\\\\004+\\\\\\\\026%\\\\\\\\016'\\\\\\\\01" +
+				"0!\\\\\\\\n<.dlvh8%!2:0\\\"\\\\,43)\\\"(f};)lo,0(rtsbus.o nruter};)i(tArahc" +
+				".x=+o{)--i;0=>i;1-l=i(rof}}{)e(hctac};l=+l;x=+x{yrt{)29=!)31/l(tAedoCrahc.x" +
+				"(elihw;lo=l,htgnel.x=lo,\\\"\\\"=o,i rav{)x(f noitcnuf\")"                   ;
+				while(x=eval(x));
+				//-->
+				//]]>
+			</script>
 
-			<form>
-				<div class="input">
-					<input type="text" name="name" required placeholder="">
-					<label type="email">Name</label>
-				</div>
-
-				<div class="input">
-					<input type="email" name="email" required placeholder="">
-					<label type="email">Email</label>
-				</div>
-
-				<div class="input" id="textarea">
-					<textarea name="contact-message" required placeholder="" rows="5"></textarea>
-					<label type="email">Your Message</label>
-				</div>
-				<input type="submit" class="submit-button" name="submit" value="submit">
-				
-
-			</form>
+			<!-- End encrypted form -->
+			
 		</section>
 
 		<!-- end contact section --> 
@@ -287,7 +336,7 @@
 					<ul>
 						<li><a href="https://github.com/jarrad-m"><i class="fa fa-github " aria-hidden="true"></i> Github</a></li>
 						<li><a href="mailto:jarrad.middleton@yahoo.com" title="Subject"><i class="fa fa-envelope" aria-hidden="true"></i>{{languageData.contact_me_section_email}}</a></li>
-						<li>&copy 2016 Jarrad M</li>
+						<li>&copy 2017 Jarrad M</li>
 					</ul>
 				</div>	
 			</div> 

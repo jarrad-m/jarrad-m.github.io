@@ -1,4 +1,6 @@
 angular.module('portfolioApp', [])
+	
+	
 
 	.controller('languageController', ['$scope', '$http', function($scope, $http) {
 
@@ -31,7 +33,7 @@ angular.module('portfolioApp', [])
 							about : "A reworked version of the flash website 'IFCalc'",
 							tech : "Angular, Charts.js, HTML5, CSS3, Material Design",
 							summary : "The Intermittent fasting calculator dynamically calculates energy expenditure, bodyfat percentage and recommended calories for dieting users. Style based upon Google's Material Design.",
-							img_href : ["/images/ifcalc.png"],
+							img_href : ["/images/ifcalc.png","/images/securex-showcase.jpg"],
 							project_href : "",
 							github_href : ""},
 
@@ -39,7 +41,7 @@ angular.module('portfolioApp', [])
 							about : "A fully responsive site re-design",
 							tech : "HTML5, CSS3",
 							summary : "While keeping the same basic layout and formatting I redesigned the site to be fully responsive across tablet and mobile devices.",
-							img_href : ["/images/securex-showcase.jpg"],
+							img_href : ["/images/securex-showcase.jpg","/images/surge.png","/images/balloons.png"],
 							project_href : "",
 							github_href : ""},
 
@@ -91,14 +93,6 @@ angular.module('portfolioApp', [])
 							img_href : ["/images/digitaldoorlocks.png"],
 							project_href : "https://www.digitaldoorlocks.com.au",
 							github_href : ""}
-
-
-
-
-
-
-
-
 
 
 							];			
@@ -176,12 +170,50 @@ angular.module('portfolioApp', [])
 				$scope.defaultLanguage = "Japanese"
 				$scope.switchedLanguage = "English";
 			}
-		}
-
-	//loadLanguage = function(lang) {
-	//	if (lang == "English")	
-
-	//}
-
+		};	
+	}])
 	
-}]);
+	.controller('slidesController', function ($scope, $http) {
+        
+	    
+        $scope.slides = $scope.project.img_href; 
+
+        /* $scope.slides = [
+	        {image: 'images/img001.jpg', description: 'Image 01'},
+	        {image: 'images/img002.jpg', description: 'Image 02'},
+	        {image: 'images/img003.jpg', description: 'Image 03'},
+	        {image: 'images/img004.jpg', description: 'Image 04'}
+	    ]; 
+        */
+
+        $scope.currentIndex = 0;
+
+    	$scope.setCurrentSlideIndex = function (index) {
+        	$scope.currentIndex = index;
+    	};
+    	
+    	$scope.isCurrentSlideIndex = function (index) {
+        	return $scope.currentIndex === index;
+    	};
+
+    	$scope.prevSlide = function () {
+        	$scope.currentIndex = ($scope.currentIndex < $scope.slides.length - 1) ? ++$scope.currentIndex : 0;
+    	};
+
+    	$scope.nextSlide = function () {
+        	$scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
+    	};
+
+
+    	$scope.hasMultipleImages = function () {
+    		return $scope.slides.length > 1;
+    	}
+
+
+
+    })
+
+
+
+
+
