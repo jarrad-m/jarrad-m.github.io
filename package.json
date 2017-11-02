@@ -1,0 +1,31 @@
+{
+  "name": "jarrad-m.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "sass": "^1.0.0-beta.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.6",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-postcss": "^0.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarrad-m/jarrad-m.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jarrad-m/jarrad-m.github.io/issues"
+  },
+  "homepage": "https://github.com/jarrad-m/jarrad-m.github.io#readme"
+}
