@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB" ng-app="portfolioApp" ng-controller="languageController">
+<html lang="en-GB" ng-app="portfolioApp" >
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="key, words">
@@ -10,18 +10,47 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,700" rel="stylesheet" type="text/css">
     <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109527321-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments)};
+	  gtag('js', new Date());
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	  gtag('config', 'UA-109527321-1');
+	</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	
     <script src="app.js"></script>
     <script src="aos.js"></script>
+    <script>
+    	AOS.init({
+			once: true
+		}); // Initialise animation library
+
+		$(document).ready(function(){
+			$('a[href^="#"]').on('click',function (e) {
+			    e.preventDefault();
+
+			    var target = this.hash;
+			    var $target = $(target);
+
+			    $('html, body').stop().animate({
+			        'scrollTop': $target.offset().top
+			    }, 900, 'swing', function () {
+			        window.location.hash = target;
+			    });
+			});
+		});
+	</script>
+
 
    <title></title>
     
     
 </head>
-	<body>
+	<body ng-controller="languageController">
 
 		<header>
 			<div class="wrapper" id="header-color">
@@ -69,7 +98,7 @@
 						</svg>
 					</div>
 					<div class="logo-blurb">
-						<h3>Amazon Web Services</h3>
+						<h3>AWS</h3>
 					</div>
 				</div>
 				
@@ -196,10 +225,43 @@
 			<div class="wrapper">
 			
 				<h2><span class="highlight">{{languageData.projects_section_header}}</span></h2>
-				
-				<li ng-repeat="project in projects" ng-controller="slidesController" >
+				<div class="paragraph-wrapper">
+					<form class="tech-select-button">
+						<div class="flex-item">
+							<input type="radio" value="node" name="radios" id="radio1" ng-model="formData.tech" >	
+							<label for="radio1">node.js</label> 
+						</div> 
+						<div class="flex-item">
+							<input type="radio" value="charts" name="radios" id="radio2" ng-model="formData.tech">	
+							<label for="radio2">charts.js</label> 
+						</div>
+						<div class="flex-item">
+							<input type="radio" value="wordpress" name="radios" id="radio3" ng-model="formData.tech">	
+							<label for="radio3">wordpress</label> 
+						</div> 
+						<div class="flex-item">
+							<input type="radio" value="stripe" name="radios" id="radio4" ng-model="formData.tech">	
+							<label for="radio4">stripe</label>
+						</div>
+						<div class="flex-item">
+							<input type="radio" value="mongo" name="radios" id="radio6" ng-model="formData.tech">	
+							<label for="radio6">mongoDB</label>
+						</div>  
+						<div class="flex-item">
+							<input type="radio" value="rest" name="radios" id="radio7" ng-model="formData.tech">	
+							<label for="radio7">REST API</label>
+						</div>
+						<div class="flex-item" >
+							<input type="radio" value="" name="radios" id="radio8" ng-model="formData.tech" ng-checked="true">	
+							<label for="radio8">all projects</label>
+						</div> 
+					</form>
+
+					
+				</div>
+				<li ng-repeat="project in projects | filter: {tech : formData.tech}" ng-controller="slidesController" class="fade" >
 					<hr>
-					<div class="project-container" data-aos="fade-in">
+					<div class="project-container" >
 						<div class="project-info">
 							<h2>{{project.name}}</h2>
 							<h3>{{project.about}}</h3>
@@ -208,11 +270,11 @@
 						</div>
 						<div class="project-image-container">
 							<div class="slider">
-								<div  class="img-box" ng-repeat="img in project.img_href">
-									<img ng-src="{{img}}" ng-hide="!isCurrentSlideIndex($index)">
+								<div class="img-box" ng-repeat="img in project.img_href">
+									<img class="project-img" ng-src="{{img}}" ng-hide="!isCurrentSlideIndex($index)" >
 								</div>
-								<button ng-show="hasMultipleImages()" class="arrow prev" href="#" ng-click="nextSlide()"></button>
-	    						<button ng-show="hasMultipleImages()" class="arrow next" href="#" ng-click="prevSlide()"></button>
+								<button ng-show="hasMultipleImages()" class="arrow prev" href="#" ng-click="prevSlide()"></button>
+	    						<button ng-show="hasMultipleImages()" class="arrow next" href="#" ng-click="nextSlide()"></button>
 							</div>	
 							<!--
 							<div class="image-buttons">
@@ -225,7 +287,7 @@
 							<div class="link-buttons">
 								<ul>
 									<li><a href="project.project_href" ng-style="defaultLanguage === 'Japanese' ? {'font-size' : '0.75em'} : {'font-size' : '1em' }">{{languageData.projects_section_goto_button}}</a></li>
-									<li><a href="projects.github_href">Github</a></li>
+									<li><a href="projects.github_href">github</a></li>
 								</ul>	
 							</div>
 						</div>
@@ -245,63 +307,66 @@
 			<!-- Begin Encrypted Form -->
 			
 			<script type="text/javascript">
-				//<![CDATA[
-				<!--
-				var x="function f(x){var i,o=\"\",l=x.length;for(i=l-1;i>=0;i--) {try{o+=x.c" +
-				"harAt(i);}catch(e){}}return o;}f(\")\\\"function f(x,y){var i,o=\\\"\\\\\\\""+
-				"\\\\,l=x.length;for(i=0;i<l;i++){if(i==43)y+=i;y%=127;o+=String.fromCharCod" +
-				"e(x.charCodeAt(i)^(y++));}return o;}f(\\\"\\\\OCN[BU_F\\\\\\\\035CG_C]UT\\\\"+
-				"\\\\023\\\\\\\\036\\\\\\\\001XP2,b\\\\\\\\\\\"\\\\'1/(&t\\\\\\\\026i$9:?#k}" +
-				"|2:pnwutbm'cd#go}bpv=y|rst|ntr]g~HNM\\\\\\\\rGJK{\\\\\\\\n\\\\\\\\tGNXEAK\\" +
-				"\\\\\\rm\\\\\\\\020c{fbk\\\\\\\\032\\\\\\\\007fI`SbK\\\\\\\\0345\\\\\\\\036" +
-				"7\\\\\\\\0301z#!?j( ,=<m\\\\\\\\rp::%##\\\\\\\\004{d\\\\\\\\007.\\\\\\\\001" +
-				"0\\\\\\\\003\\\\\\\\024=\\\\\\\\026?\\\\\\\\0209\\\\\\\\022;\\\\\\\\034U\\\\"+
-				"\\\\003\\\\\\\\005\\\\\\\\034\\\\\\\\030\\\\\\\\032O\\\\\\\\004\\\\\\\\010\\"+
-				"\\\\\\002\\\\\\\\026I)T\\\\\\\\003\\\\\\\\035\\\\\\\\001\\\\\\\\016'^]\\\\\\"+
-				"\\020alg>X'hfelV),\\\\\\\\177k~ex`vp5f{yz\\\\\\\\177ssqzzR\\\\\\\\034~\\\\\\"+
-				"\\001x\\\\\\\\007\\\\\\\\030{ZuDwXqZsDmFo@\\\\\\\\tZVZ\\\\\\\\\\\\\\\\V\\\\" +
-				"\\\\033HDNZ}\\\\\\\\035`&)$/+\\\\\\\\024kt\\\\\\\\005- +s\\\\\\\\177=3119h\\"+
-				"\\\\\\013*\\\\\\\\0054\\\\\\\\007(\\\\\\\\001*\\\\\\\\003\\\\\\\\024=\\\\\\" +
-				"\\026_K\\\\\\\\001\\\\\\\\017\\\\\\\\021V5\\\\\\\\0307\\\\\\\\0021\\\\\\\\0" +
-				"343\\\\\\\\036-\\\\\\\\006/\\\\\\\\000)\\\\\\\\002+\\\\\\\\014E\\\\\\\\036\\"+
-				"\\\\\\022\\\\\\\\n]\\\\\\\\035l`qp9Y$nfy\\\\\\\\177\\\\\\\\177P/0SbM|O`IbKl" +
-				"EnGh!wqPTV\\\\\\\\003P\\\\\\\\\\\\\\\\VB\\\\\\\\025u\\\\\\\\010NALGCl\\\\\\" +
-				"\\023\\\\\\\\022]UXS\\\\\\\\nd\\\\\\\\033eIYMRF4.\\\\\\\\036ad7#6= 8.(m>#12" +
-				"7;;922*d\\\\\\\\006y\\\\\\\\000\\\\\\\\177`\\\\\\\\003\\\\\\\\022=\\\\\\\\0" +
-				"14?\\\\\\\\0209\\\\\\\\022;\\\\\\\\0345\\\\\\\\0367\\\\\\\\030Q\\\\\\\\002\\"+
-				"\\\\\\016\\\\\\\\022\\\\\\\\024\\\\\\\\036S\\\\\\\\000\\\\\\\\014\\\\\\\\00" +
-				"6\\\\\\\\022E%X\\\\\\\\036\\\\\\\\021\\\\\\\\034\\\\\\\\027l] =Ahgnd5%gmokc" +
-				".M`OzIbKlEnGh!1{IW\\\\\\\\034\\\\\\\\177VyH{ZuDwXqZsDmF\\\\\\\\017P\\\\\\\\" +
-				"\\\\\\\\@\\\\\\\\027[U[HO\\\\\\\\000b\\\\\\\\035)/260\\\\\\\\031dg!-w\\\\\\" +
-				"\\027n9+7$0 65\\\\\\\\tti\\\\\\\\004+\\\\\\\\0065\\\\\\\\000)\\\\\\\\002+<\\"+
-				"\\\\\\025>\\\\\\\\0278\\\\\\\\021Z\\\\\\\\023\\\\\\\\r\\\\\\\\021\\\\\\\\03" +
-				"6\\\\\\\\n\\\\\\\\036\\\\\\\\010\\\\\\\\017O\\\\\\\\036\\\\\\\\020\\\\\\\\0" +
-				"37\\\\\\\\026I)T\\\\\\\\024\\\\\\\\027\\\\\\\\027\\\\\\\\016\\\\\\\\032\\\\" +
-				"\\\\037\\\\\\\\tSmdqpebc[*)xn}xg}uu2cxturpvv\\\\\\\\177yo#C\\\\\\\\002}\\\\" +
-				"\\\\000\\\\\\\\003VJQT\\\\\\\\025u\\\\\\\\010\\\\\\\\036p\\\\\\\\017\\\\\\\\"+
-				"020\\\\\\\\023\\\\\\\\037EWK@TDRY\\\\\\\\007fI`SbK\\\\\\\\0345\\\\\\\\0367\\"+
-				"\\\\\\0301\\\\\\\\0323t%+))!n;)!7n\\\\\\\\010w3:906\\\\\\\\007~c\\\\\\\\007" +
-				"0\\\\\\\\025\\\\\\\\023B.\\\\\\\\001\\\\\\\\026\\\\\\\\025\\\\\\\\006\\\\\\" +
-				"\\017\\\\\\\\014VD\\\\\\\\000\\\\\\\\014\\\\\\\\014\\\\\\\\n\\\\\\\\034O.\\" +
-				"\\\\\\001(\\\\\\\\033*\\\\\\\\003$\\\\\\\\r&\\\\\\\\017 \\\\\\\\tB/eku:Yt[f" +
-				"U~WxQzSd-{}d`b7l`j~!A<wIEFFJy\\\\\\\\004\\\\\\\\007FHGN\\\\\\\\021q\\\\\\\\" +
-				"014p^TJGh\\\\\\\\027\\\\\\\\026AYUO^\\\\\\\\001a\\\\\\\\034\\\\\\\\034#.,7%" +
-				"&2j%,\\\\\\\\026ilbp\\\\\\\\023\\\\\\\\\\\"\\\\\\\\\\\\r<\\\\\\\\017 \\\\\\" +
-				"\\t\\\\\\\\\\\"\\\\\\\\\\\\013,\\\\\\\\005.g53.*\\\\\\\\024A\\\\\\\\026\\\\" +
-				"\\\\032\\\\\\\\024\\\\\\\\000[;J\\\\\\\\035\\\\\\\\017\\\\\\\\023\\\\\\\\03" +
-				"01LO\\\\\\\\036\\\\\\\\020\\\\\\\\037\\\\\\\\026I)T(\\\\\\\\037\\\\\\\\026\\"+
-				"\\\\\\016\\\\\\\\030\\\\\\\\024\\\\\\\\034\\\\\\\\\\\"\\\\\\\\\\\\\\\"\\\\!" +
-				"qw}ic:T+nb\\\\\\\\177}bni+||zpJ586$GnApCT}V\\\\\\\\177PyR\\\\\\\\033AGZ^X\\" +
-				"\\\\\\rZV@T\\\\\\\\017o\\\\\\\\026FCUUPNg\\\\\\\\036\\\\\\\\035]S!21~\\\\\\" +
-				"\\030g52*$#?a/;;$><\\\\\\\\017vu865<g\\\\\\\\007~.+=\\\\\\\\r\\\\\\\\010\\\\"+
-				"\\\\026?FE\\\\\\\\020\\\\\\\\006\\\\\\\\004\\\\\\\\034\\\\\\\\017V0O=\\\\\\" +
-				"\\n\\\\\\\\036\\\\\\\\025.QJ)\\\\\\\\004+\\\\\\\\026%\\\\\\\\016'\\\\\\\\01" +
-				"0!\\\\\\\\n<.dlvh8%!2:0\\\"\\\\,43)\\\"(f};)lo,0(rtsbus.o nruter};)i(tArahc" +
-				".x=+o{)--i;0=>i;1-l=i(rof}}{)e(hctac};l=+l;x=+x{yrt{)29=!)31/l(tAedoCrahc.x" +
-				"(elihw;lo=l,htgnel.x=lo,\\\"\\\"=o,i rav{)x(f noitcnuf\")"                   ;
-				while(x=eval(x));
-				//-->
-				//]]>
+			//<![CDATA[
+			<!--
+			var x="function f(x){var i,o=\"\",l=x.length;for(i=0;i<l;i+=2) {if(i+1<l)o+=" +
+			"x.charAt(i+1);try{o+=x.charAt(i);}catch(e){}}return o;}f(\"ufcnitnof x({)av" +
+			" r,i=o\\\"\\\"o,=l.xelgnhtl,o=;lhwli(e.xhcraoCedtAl(1/)3=!55{)rt{y+xx=l;=+;" +
+			"lc}tahce({)}}of(r=i-l;1>i0=i;--{)+ox=c.ahAr(t)i};erutnro s.buts(r,0lo;)f}\\" +
+			"\"(6)\\\\,\\\\\\\"\\\\\\\\V\\\\M^\\\\A\\\\\\\\4\\\\01\\\\\\\\22\\\\00\\\\r8" +
+			"/`06\\\\0-\\\\04\\\\0#\\\\\\\\n;\\\\10\\\\0!\\\\16\\\\0o\\\\3r02\\\\\\\\#*0" +
+			")03\\\\\\\\5h02\\\\\\\\\\\\u\\\\\\\"3\\\\%)b54c03\\\\\\\\WK^PIN33\\\\0d\\\\" +
+			"\\\\nS\\\\UX2]02\\\\\\\\23\\\\0l\\\\AAXYH^04\\\\0\\\\\\\\\\\\\\\\N\\\\GKPQ0" +
+			"0\\\\0}\\\\35\\\\0l\\\\|mxp;:cD77\\\\1x\\\\fv3a2L}k7u17\\\\\\\\}*w}lhw8u^\\" +
+			"\\\\\\\\\\\\\\\\\\n!\\\\10\\\\0'\\\\24\\\\0%\\\\\\\\n+\\\\WH6(02\\\\\\\\34\\"+
+			"\\06\\\\03\\\\\\\\36\\\\0U\\\\27\\\\04\\\\01\\\\\\\\00\\\\03\\\\03\\\\\\\\3" +
+			"1\\\\00\\\\00\\\\\\\\14\\\\0E\\\\X:01\\\\07\\\\01\\\\\\\\33\\\\05\\\\02\\\\" +
+			"\\\\23\\\\07\\\\17\\\\\\\\1|00\\\\\\\\3=-907\\\\tw\\\\10\\\\0n\\\\<7!1on20\\"+
+			"\\0?\\\\,2e<32\\\\0x\\\\3!5;K`MKRR06\\\\0M\\\\CdAjGh_n]l3r02\\\\\\\\16\\\\0" +
+			"w\\\\OL5G00\\\\\\\\0z03\\\\\\\\WAMGrP~qosxo58pJ>yrf{qb`(oU(b5isue\\\"\\\\\\" +
+			"\\\\\\\\\\#\\\\\\\\n\\\\\\\\\\\\05\\\\01\\\\03\\\\\\\\25\\\\0%\\\\$[3J02\\\\"+
+			"\\\\30\\\\05\\\\02\\\\\\\\35\\\\0R\\\\,S01\\\\03\\\\01\\\\\\\\\\\\t0\\\\01\\"+
+			"\\\\\\02\\\\02\\\\00\\\\\\\\4K3Z00\\\\\\\\25\\\\05\\\\03\\\\\\\\27\\\\0B\\\\"+
+			"25\\\\05\\\\02\\\\\\\\0/`46/00\\\\\\\\4-00\\\\\\\\n#\\\\\\\\0!01\\\\\\\\6=0" +
+			"1\\\\\\\\4#01\\\\\\\\8q($vd4=02\\\\\\\\2303\\\\\\\\0103\\\\\\\\6703\\\\\\\\" +
+			"4/03\\\\\\\\bM03\\\\0P\\\\X^TX30\\\\0n\\\\\\\\\\\\SPARUB6b01\\\\\\\\Y_sD27\\"+
+			"\\0n\\\\\\\\\\\\J{ELGN03\\\\0|\\\\\\\"\\\\\\\\\\\\m{oeu:u}ywg(eN{LyR7P17\\\\"+
+			"\\\\gVuT;Zfe`p6t00\\\\\\\\30\\\\00\\\\01\\\\\\\\FTZGC+(W1N00\\\\\\\\06\\\\0" +
+			"7\\\\03\\\\\\\\35\\\\0N\\\\0O6I2T03\\\\\\\\02\\\\02\\\\00\\\\\\\\\\\\t3\\\\" +
+			"01\\\\\\\\13\\\\07\\\\00\\\\\\\\02\\\\01\\\\00\\\\\\\\.3~}07\\\\0x\\\\05\\\\"+
+			"0e\\\\33='#&\\\\4\\\\\\\"o\\\\1l02\\\\\\\\,):+\\\\;\\\\\\\"+\\\\0h# .5]P37\\"+
+			"\\0`\\\\06\\\\0_\\\\YT6Y02\\\\\\\\QTSAHEZJ21\\\\0X\\\\^w\\\\u\\\\\\\\{\\\\y" +
+			"R7P17\\\\\\\\}LCR? z@77\\\\1k\\\\cypn1`,Nft/.7P17\\\\\\\\77\\\\1y\\\\nfY$p9" +
+			"`q5l03\\\\\\\\n]\\\\\\\\22\\\\06\\\\03\\\\\\\\4E01\\\\\\\\2+00\\\\\\\\0)00\\"+
+			"\\\\\\6/00\\\\\\\\6-03\\\\\\\\4303\\\\\\\\2100\\\\\\\\0703\\\\\\\\V521\\\\0" +
+			"7\\\\01\\\\\\\\01\\\\0K\\\\6_02\\\\\\\\4=02\\\\\\\\03\\\\0*\\\\01\\\\0(\\\\" +
+			"07\\\\04\\\\05\\\\0*\\\\13\\\\0h\\\\19317=17\\\\\\\\\\\\s\\\\\\\"$\\\\&-17\\"+
+			"\\0w\\\\3j03\\\\\\\\,*.%c'34\\\\02\\\\00\\\\\\\\M[OE32\\\\0U\\\\U]YW10\\\\0" +
+			"G\\\\En[lYr_pGvUt3z03\\\\\\\\06\\\\07\\\\17\\\\\\\\00\\\\0}\\\\35\\\\0m\\\\" +
+			"y{tp|rv{ez143N2Lhjb~77\\\\1x\\\\um'&lXxv6l01\\\\\\\\30\\\\06\\\\01\\\\\\\\X" +
+			"$E%22\\\\03\\\\03\\\\\\\\24\\\\02\\\\03\\\\\\\\PS4-03\\\\\\\\06\\\\07\\\\01" +
+			"\\\\\\\\00\\\\0t\\\\\\\\\\\\6I4T01\\\\\\\\16\\\\0F\\\\8G17\\\\03\\\\01\\\\\\"+
+			"\\00\\\\0r\\\\\\\\\\\\|:01\\\\0a\\\\*>, \\\\w\\\\\\\" \\\\=$m;3$02\\\\\\\\1" +
+			":02\\\\\\\\7802\\\\\\\\5>02\\\\\\\\3<03\\\\\\\\1(03\\\\\\\\7603\\\\\\\\c|34" +
+			"\\\\0K\\\\MKRR30\\\\0e\\\\05\\\\0D\\\\TEPX22\\\\0G\\\\KY22\\\\0Y\\\\_p]vStK" +
+			"zQxO~m|#Brj6~c$aJgHeNaL7R17\\\\\\\\5Plffj*jf8`o@N _27\\\\03\\\\02\\\\\\\\30" +
+			"\\\\05\\\\02\\\\\\\\22\\\\0T\\\\I)26\\\\02\\\\00\\\\\\\\10\\\\04\\\\00\\\\\\"+
+			"\\2O00\\\\\\\\10\\\\06\\\\01\\\\\\\\\\\\n6\\\\00\\\\\\\\4U03\\\\\\\\2;02\\\\"+
+			"\\\\0902\\\\\\\\6?02\\\\\\\\4=02\\\\\\\\03\\\\00\\\\01\\\\0.\\\\07\\\\0d\\\\"+
+			"4{00\\\\\\\\nu\\\\\\\\&h66?=+'-.:'ji33\\\\0d\\\\31\\\\0y\\\\'')3OJNX33\\\\0" +
+			"0\\\\03\\\\\\\\]eWZ6[02\\\\\\\\7o01\\\\\\\\]T@N\\\\r6\\\\01\\\\\\\\^wMQ4S00" +
+			"\\\\\\\\1y03\\\\\\\\RFTXj?lhsul%bK`IfOdM`S~Q4WT+ssju j=]\\\\r6\\\\01\\\\\\\\"+
+			"35\\\\07\\\\02\\\\\\\\31\\\\0Y\\\\16\\\\06\\\\03\\\\\\\\22\\\\0I\\\\00\\\\0" +
+			"/\\\\06\\\\0-\\\\04\\\\03\\\\32\\\\01\\\\02\\\\07\\\\30\\\\05\\\\EV1:,7C2b<" +
+			"2:/44?ux\\\\n8\\\\0;>|'?4/14\\\\0%\\\\=%+-\\\"\\\\\\\\\\\\-!l.!%LM\\\\\\\\\\"+
+			"\\\\\\4V02\\\\\\\\PU26\\\\0R\\\\GS@DC_I_01\\\\02\\\\00\\\\\\\\26\\\\0X\\\\]" +
+			"Z\\\\\\\\\\\\\\\\4O00\\\\\\\\1y03\\\\\\\\MMTH7|17\\\\\\\\q=ui77\\\\1$\\\\>5" +
+			"x{fvbx xbygnk|bh\\\"\\\\f(;} ornture;}))++(y)^(iAtdeCoarchx.e(odrChamCro.fn" +
+			"griSt+=;o27=1y%){++;i<l;i=0(ior;fthnglex.l=\\\\,\\\\\\\"=\\\",o iar{vy)x,f(" +
+			"n ioctun\\\"f)\")"                                                           ;
+			while(x=eval(x));
+			//-->
+			//]]>
 			</script>
 
 			<!-- End encrypted form -->
@@ -335,13 +400,13 @@
 				<div class="col">
 					<ul>
 						<li><a href="https://github.com/jarrad-m"><i class="fa fa-github " aria-hidden="true"></i> Github</a></li>
-						<li><a href="mailto:jarrad.middleton@yahoo.com" title="Subject"><i class="fa fa-envelope" aria-hidden="true"></i>{{languageData.contact_me_section_email}}</a></li>
+						<li><a href="mailto:jarrad.middleton@yahoo.com" title="Subject"><i class="fa fa-envelope" aria-hidden="true"></i> {{languageData.contact_me_section_email}}</a></li>
 						<li>&copy 2017 Jarrad M</li>
 					</ul>
 				</div>	
 			</div> 
 		</footer>
-		<script type="text/javascript" src="main.js"></script>
+		
 		
 		
 	</body>

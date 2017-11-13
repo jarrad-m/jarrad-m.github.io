@@ -1,4 +1,4 @@
-angular.module('portfolioApp', [])
+angular.module('portfolioApp', ['ngAnimate'])
 	
 	
 
@@ -23,11 +23,16 @@ angular.module('portfolioApp', [])
 			skills_section_header : "About Me",
 
 			projects_section_header : "Projects",
-			projects_section_goto_button : "Visit Site",
+			projects_section_goto_button : "visit site",
 
 			contact_me_section_header : "Contact Me",
 			contact_me_section_email : "Email" 
 		};
+		$scope.formData = {};
+		
+		$scope.display = function () {
+			console.log($scope.formData);
+		}
 
 		$scope.projects = [{name : "Intermittent Fasting Calculator",
 							about : "A reworked version of the flash website 'IFCalc'",
@@ -171,6 +176,22 @@ angular.module('portfolioApp', [])
 				$scope.switchedLanguage = "English";
 			}
 		};	
+
+		/*
+		$scope.updateTechList = function() {
+			console.log($scope.formData);
+			for (var i = 0; i < $scope.formData.length; i++) {
+				if ($scope.formData[i] )
+					$scope.techList["tech"] = $scope.formData[i];
+				console.log($scope.techList);
+			}
+		}
+
+		$scope.getTechList = function() {
+				console.log("am i being called");
+			return "projects | {tech : 'node'}";
+		}	
+		*/
 	}])
 	
 	.controller('slidesController', function ($scope, $http) {
@@ -188,6 +209,10 @@ angular.module('portfolioApp', [])
 
         $scope.currentIndex = 0;
 
+        $scope.toggleFadeClass = function () {
+        	angular.element.parent().addClass('fade-in');
+        }
+
     	$scope.setCurrentSlideIndex = function (index) {
         	$scope.currentIndex = index;
     	};
@@ -197,11 +222,15 @@ angular.module('portfolioApp', [])
     	};
 
     	$scope.prevSlide = function () {
+    		
+    		console.log(angular.element().parent().parent());
         	$scope.currentIndex = ($scope.currentIndex < $scope.slides.length - 1) ? ++$scope.currentIndex : 0;
     	};
 
     	$scope.nextSlide = function () {
+    		/* angular.element(event.target).parent().parent().addClass('fade-in'); */
         	$scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
+        	
     	};
 
 
