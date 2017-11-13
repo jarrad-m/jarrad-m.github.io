@@ -24,27 +24,6 @@
 	
     <script src="app.js"></script>
     <script src="aos.js"></script>
-    <script>
-    	AOS.init({
-			once: true
-		}); // Initialise animation library
-
-		$(document).ready(function(){
-			$('a[href^="#"]').on('click',function (e) {
-			    e.preventDefault();
-
-			    var target = this.hash;
-			    var $target = $(target);
-
-			    $('html, body').stop().animate({
-			        'scrollTop': $target.offset().top
-			    }, 900, 'swing', function () {
-			        window.location.hash = target;
-			    });
-			});
-		});
-	</script>
-
 
    <title></title>
     
@@ -406,8 +385,26 @@
 				</div>	
 			</div> 
 		</footer>
-		
-		
-		
+		<script type="text/javascript" src="main.js">
+			AOS.init({
+			once: true
+			}); // Initialise animation library
+
+			// Scroll-to effect on menu buttons
+			$(document).ready(function(){
+				$('a[href^="#"]').on('click',function (e) {
+				    e.preventDefault();
+
+				    var target = this.hash;
+				    var $target = $(target);
+
+				    $('html, body').stop().animate({
+				        'scrollTop': $target.offset().top
+				    }, 900, 'swing', function () {
+				        window.location.hash = target;
+				    });
+				});
+			});
+		</script>		
 	</body>
 </html>
