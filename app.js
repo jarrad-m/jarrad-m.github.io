@@ -17,7 +17,7 @@ angular.module('portfolioApp', ['ngAnimate'])
 			header_nav_projects : "Projects",
 			header_nav_contact : "Contact",
 
-			main_banner_header : "Jarrad M",
+			main_banner_header : "Jarrad Middleton",
 			main_banner_header_blurb : "Web Developer",
 
 			skills_section_header : "About Me",
@@ -34,11 +34,19 @@ angular.module('portfolioApp', ['ngAnimate'])
 			console.log($scope.formData);
 		}
 
-		$scope.projects = [{name : "Intermittent Fasting Calculator",
-							about : "A reworked version of the flash website 'IFCalc'",
-							tech : "Angular, Charts.js, HTML5, CSS3, Material Design",
-							summary : "The Intermittent fasting calculator dynamically calculates energy expenditure, bodyfat percentage and recommended calories for dieting users. Style based upon Google's Material Design.",
-							img_href : ["/images/ifcalc.png","/images/securex-showcase.jpg"],
+		$scope.projects = [{name : "Project 149",
+							about : "Portfolio site for local artist",
+							tech : "Angular, HTML5, CSS3",
+							summary : "This website was created in collaboration with the client and as best possible to his design specifications.",
+							img_href : ["/images/project149.png"],
+							project_href : "http://gabe.jarradm.s3-website-ap-southeast-2.amazonaws.com",
+							github_href : ""},
+
+							{name : "Intermittent Fasting Calculator",
+							about : "A reworked version of the flash app 'IFCalc'",
+							tech : "Angular, Charts.js, HTML5, CSS3",
+							summary : "The Intermittent fasting calculator dynamically calculates energy expenditure, bodyfat percentage and recommended calories for dieting users. This is a reworked version of the flash app 'IFCalc'",
+							img_href : ["/images/ifcalc.png"],
 							project_href : "",
 							github_href : ""},
 
@@ -52,40 +60,34 @@ angular.module('portfolioApp', ['ngAnimate'])
 
 							{name : "Surge Website",
 							about : "A marketing focussed web developer site",
-							tech : "Wordpress, HTML5, CSS3",
-							summary : "Developed with the goal of familiarising myself with the Wordpress ecosystem. Creatives designed in collaboration with a local marketing guru in order to create a brand.",
+							tech : "HTML5, CSS3",
+							summary : "Advertorial style webpage. Creatives designed in collaboration with a local marketing guru in order to create a brand.",
 							img_href : ["/images/surge.png"],
-							project_href : "",
+							project_href : "http://surge.jarradm.s3-website-ap-southeast-2.amazonaws.com",
 							github_href : ""},
 
 							{name : "Balloons for All SPA",
-							about : "Single Page Application shopping cart with fully integrated Stripe Payment",
+							about : "Single Page Application shopping cart with Stripe Payment",
 							tech : "Angular, Stripe, CSS Flexbox, JavaScript",
-							summary : "Using angular ",
+							summary : "Using angular a simple web app for viewing, selecting and buying balloons based using Angular on the front-end",
 							img_href : ["/images/balloons.png"],
-							project_href : "",
+							project_href : "http://balloons4all.s3-website-ap-southeast-2.amazonaws.com",
 							github_href : ""},
 
-							{name : "Project 149",
-							about : "Portfolio site for local artist",
-							tech : "Angular, HTML5, CSS3, Mailchimp",
-							summary : "This website was created in collaboration with the client and as best possible to his design specifications.",
-							img_href : ["/images/project149.png"],
-							project_href : "",
-							github_href : ""},
+							
 
 							{name : "Morey Security",
 							about : "Website re-design",
-							tech : "HTML5, CSS3, JavaScript, Mailchimp",
+							tech : "HTML5, CSS3, JavaScript",
 							summary : "The client needed a modern, fully responsive website. Landing pages and Mailchimp integration were also done.",
 							img_href : ["/images/morey.png"],
-							project_href : "",
+							project_href : "http://morey.jarradm.s3-website-ap-southeast-2.amazonaws.com",
 							github_href : ""},
 
 							{name : "CoinMeUp Bitcoin App",
 							about : "A Single Page App for those interested in trading Bitcoin",
 							tech : "Angular, Charts.js, MongoDB, NodeJS, REST",
-							summary : "This app allows users to simulate buying and selling Bitcoins using data retrieved from the bitcoin API",
+							summary : "In development. This app allows users to simulate buying and selling Bitcoins using data retrieved from the bitcoin API",
 							img_href : ["/images/leangains.png"],
 							project_href : "",
 							github_href : ""},
@@ -94,7 +96,7 @@ angular.module('portfolioApp', ['ngAnimate'])
 							{name : "Digital Door Locks",
 							about : "Theme update and re-design",
 							tech : "Wordpress, HTML5, CSS3",
-							summary : "I was in charge of the re-design of the DDL website",
+							summary : "I was in charge of the re-design of the Digital Door Locks Australia website",
 							img_href : ["/images/digitaldoorlocks.png"],
 							project_href : "https://www.digitaldoorlocks.com.au",
 							github_href : ""}

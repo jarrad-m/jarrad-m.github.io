@@ -51,7 +51,7 @@
 			<h1>{{languageData.main_banner_header}}</h1>
 			
 
-			<h1 ng-style="defaultLanguage === 'Japanese' ? {'font-size' : '0.75em'} : {'font-size' : '1em' }">{{languageData.main_banner_header_blurb}}</h1>
+			<h2>{{languageData.main_banner_header_blurb}}</h2>
 			<!--
 			<button ng-click="changeLanguage()">{{switchedLanguage}}</button>
 			-->
@@ -65,9 +65,9 @@
 				<h2 ng-class="className()"><span class="highlight">{{languageData.skills_section_header}}</span></h2>
 
 				<div class="paragraph-wrapper">
-					<p>This is the part where I go bladidbladibla</p>
+					<p>I'm an up and coming web developer from Perth, Western Australia. I build mobile-first focussed web pages and apps. </p>
 
-					<p>And then I continue on with bladieblas dfa </p>
+					<p>I am proficient in the tech listed below however I consider working as an web developer as an ongoing learning process, and attempt to stay up to date with the newest tech.</p>
 				</div>
 
 				<div class="skills-logo-container" data-aos="zoom-in" >
@@ -238,7 +238,7 @@
 
 					
 				</div>
-				<li ng-repeat="project in projects | filter: {tech : formData.tech}" ng-controller="slidesController" class="fade" >
+				<div class="project-repeater" ng-repeat="project in projects | filter: {tech : formData.tech}" ng-controller="slidesController" class="fade" >
 					<hr>
 					<div class="project-container" >
 						<div class="project-info">
@@ -255,23 +255,16 @@
 								<button ng-show="hasMultipleImages()" class="arrow prev" href="#" ng-click="prevSlide()"></button>
 	    						<button ng-show="hasMultipleImages()" class="arrow next" href="#" ng-click="nextSlide()"></button>
 							</div>	
-							<!--
-							<div class="image-buttons">
-								<ul>
-									<li><a href="">1</a></li>
-									<li><a href="">2</a></li>
-								</ul>
-							</div>
-							-->
+							
 							<div class="link-buttons">
 								<ul>
-									<li><a href="project.project_href" ng-style="defaultLanguage === 'Japanese' ? {'font-size' : '0.75em'} : {'font-size' : '1em' }">{{languageData.projects_section_goto_button}}</a></li>
-									<li><a href="projects.github_href">github</a></li>
+									<li ng-hide="project.project_href == ''"><a   ng-href="{{project.project_href}}" ng-style="defaultLanguage === 'Japanese' ? {'font-size' : '0.75em'} : {'font-size' : '1em' }" target="_blank">{{languageData.projects_section_goto_button}}</a></li>
+									<li ng-hide="project.github_href == ''"><a ng-href="{{project.github_href}}" target="_blank">github</a></li>
 								</ul>	
 							</div>
 						</div>
 					</div>
-				</li>
+				</div>
 			</div>						
 		</section>
 
