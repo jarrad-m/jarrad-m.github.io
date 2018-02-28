@@ -25,11 +25,16 @@
     <script src="app.js"></script>
     <script src="aos.js"></script>
 
-   <title></title>
+   <title>Portfolio</title>
+   <style type="text/css" >
+	   [ng\:cloak], [ng-cloak], .ng-cloak {
+	    	display: none;
+		}   	
+   </style>
     
     
 </head>
-	<body ng-controller="languageController">
+	<body ng-controller="languageController" ng-cloak>
 
 		<header>
 			<div class="wrapper" id="header-color">
@@ -361,6 +366,13 @@
 					-->
 				</div>
 				<div class="col">
+					<ul>
+						<li><a href="https://github.com/jarrad-m"><i class="fa fa-github " aria-hidden="true"></i> Github</a></li>
+						<li><a href="mailto:jarrad@jarradm.com" title="Subject"><i class="fa fa-envelope" aria-hidden="true"></i> {{languageData.contact_me_section_email}}</a></li>
+						<li>&copy 2017 Jarrad M</li>
+					</ul>
+				</div>	
+				<div class="col">
 					<!-- 
 					<ul>
 						<li>Some random stuff about me</li>
@@ -368,14 +380,7 @@
 						<li>Link to instagram</li>
 					</ul>
 					-->
-				</div>
-				<div class="col">
-					<ul>
-						<li><a href="https://github.com/jarrad-m"><i class="fa fa-github " aria-hidden="true"></i> Github</a></li>
-						<li><a href="mailto:jarrad.middleton@yahoo.com" title="Subject"><i class="fa fa-envelope" aria-hidden="true"></i> {{languageData.contact_me_section_email}}</a></li>
-						<li>&copy 2017 Jarrad M</li>
-					</ul>
-				</div>	
+				</div>				
 			</div> 
 		</footer>
 		<script type="text/javascript" src="main.js">
