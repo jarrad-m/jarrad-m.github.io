@@ -160,7 +160,6 @@ header nav li a {
 }
 
 #projector {
-	
 	position: absolute; 
 	top: 0px;
 	left: 0px;
@@ -764,6 +763,7 @@ span.highlight {
 		padding-top: 120px;
 		height: 80vh;
 		font-size: 0.8em;
+		box-sizing: border-box;
 	}
 
 	.skills-logo-container {
@@ -797,6 +797,7 @@ span.highlight {
 
 	#main-banner {
 		font-size: 0.7em;
+		height: 100vh;
 	}
 	footer {
 		padding-bottom: 10px;
