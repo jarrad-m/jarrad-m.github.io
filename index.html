@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="key, words">
     <meta name="description" content="description">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/style/style.css"/>
     <link rel="stylesheet" type="text/css" href="/style/aos.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -21,10 +21,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	
+	<script src="https://code.createjs.com/1.0.0/easeljs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
     <script src="app.js"></script>
-    <script src="aos.js"></script>
+	<script src="aos.js"></script>
 
+</head>
    <title>Portfolio</title>
    <style type="text/css" >
 	   [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -34,7 +36,7 @@
     
     
 </head>
-	<body ng-controller="languageController" ng-cloak>
+	<body ng-controller="languageController" ng-cloak onload="init();" >
 
 		<header>
 			<div class="wrapper" id="header-color">
@@ -53,6 +55,7 @@
 		</header>
 
 		<div id="main-banner">
+			<canvas id="projector" width="500" height="300" style="position:  absolute; top:  0; left:  0; 	width: 100%; height: 100%; z-index:  -20;">Your browser does not support the Canvas element.</canvas>
 			<h1>{{languageData.main_banner_header}}</h1>
 			
 
@@ -403,6 +406,7 @@
 				    });
 				});
 			});
+
 		</script>		
 	</body>
 </html>
