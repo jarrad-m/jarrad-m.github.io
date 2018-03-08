@@ -398,6 +398,7 @@ textarea {
   width: 50%; }
 
 .submit-button {
+  font: inherit;
   color: #696969;
   background-color: #ddd;
   border: 0;
@@ -405,7 +406,7 @@ textarea {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   float: right;
   width: 30%;
-  margin: 20px 2.5%; }
+  margin: 30px 0; }
   .submit-button:hover {
     text-decoration: none;
     background-color: #bf3987;
@@ -478,7 +479,21 @@ section > h2, #skills-section > .wrapper > h2 {
 form {
   margin: 20px auto; }
 
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.row .input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1;
+  -ms-flex: 1 1;
+     flex: 1 1;
+}
 div > input {
+  flex: 1 1 0;
   width: 80%;
   float: none;
   position: relative;
@@ -493,6 +508,10 @@ div > input {
   border: 0;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#9c27b0), to(#9c27b0)), -webkit-gradient(linear, left top, left bottom, from(#d2d2d2), to(#d2d2d2));
   transition: background 0s ease-out; }
+  .row .input:last-child input {
+    width: 100%;
+  }
+
 
 textarea {
   width: 100%;
@@ -515,15 +534,18 @@ textarea {
   display: inline-block;
   position: relative;
   float: left;
-  margin: 20px 1.25%;
-  width: 47%; }
+  margin: 20px 0; }
 
 #email {
   width: 100%; }
 
 #textarea {
-  margin: 20px 2.5%;
-  width: 95%; }
+  margin: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1;
+  -ms-flex: 1 1;
+      flex: 1 1;
+}
 
 label {
   position: absolute;
@@ -559,7 +581,7 @@ div > input:valid:not(:focus), textarea:valid:not(:focus) {
 div > input:valid:not(:focus) + label, textarea:valid:not(:focus) + label {
   font-size: 12px;
   top: 0px; }
-
+ 
 footer a:hover {
   color: white; }
 

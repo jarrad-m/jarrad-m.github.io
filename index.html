@@ -284,23 +284,23 @@
 			<h2><span class="highlight">{{languageData.contact_me_section_header}}</span></h2>
 			
 			<form action="https://formspree.io/jarrad@jarradm.com" 	method="POST">
-					<div class="input">
-						<input type="text" name="name" required placeholder="">
-						<label type="email">Name</label>
+					<div class="row">
+						<div class="input">
+							<input type="text" name="name" required placeholder="">
+							<label type="email">Name</label>
+						</div>
+						<div class="input">
+							<input type="email" name="_replyto" required placeholder="">
+							<label type="email">Email</label>
+						</div>
 					</div>
-	
-					<div class="input">
-						<input type="email" name="_replyto" required placeholder="">
-						<label type="email">Email</label>
-					</div>
-	
-					<div class="input" id="textarea">
-						<textarea name="contact-message" required placeholder="" rows="5"></textarea>
-						<label type="email">Your Message</label>
+					<div class="row">
+						<div class="input" id="textarea">
+							<textarea name="contact-message" required placeholder="" rows="5"></textarea>
+							<label type="email">Your Message</label>
+						</div>
 					</div>
 					<input type="submit" class="submit-button" name="submit" value="Send">
-					
-	
 			</form>
 
 			
@@ -314,8 +314,8 @@
 			<div class="list-container">				
 				<ul>
 					<li><a href="https://github.com/jarrad-m"><i class="fa fa-github " aria-hidden="true"></i> Github</a></li>
-					<li><a href="mailto:jarrad@jarradm.com" title="Subject"><i class="fa fa-envelope" aria-hidden="true"></i> {{languageData.contact_me_section_email}}</a></li>
 					<li><a href="https://codepen.io/jarradm"><i class="fa fa-codepen" aria-hidden="true"></i> Codepen</a></li>
+					<li><a href="mailto:jarrad@jarradm.com" title="Subject"><i class="fa fa-envelope" aria-hidden="true"></i> {{languageData.contact_me_section_email}}</a></li>
 					<li>&copy 2017 Jarrad M</li>
 				</ul>			
 			</div> 
