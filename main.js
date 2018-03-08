@@ -38,9 +38,9 @@ var ParticleEngine = (function() {
 		this.totalHeight = this.canvasHeight = document.getElementById(canvas_id).height = document.getElementById(canvas_id).offsetHeight;
 		this.compositeStyle = "lighter";
 
-		this.particleSettings = [{id:"small", num:10, fromX:0, toX:this.totalWidth, ballwidth:10, alphamax:0.9, areaHeight:.5, color:"#bf3987", fill:false}, 
-								{id:"medium", num:10, fromX:0, toX:this.totalWidth,  ballwidth:30, alphamax:0.9, areaHeight:1, color:"#bf3987", fill:true}, 
-								{id:"large", num:10, fromX:0, toX:this.totalWidth, ballwidth:200,  alphamax:0.9, areaHeight: 1, color:"#bf3987", fill:true}];
+		this.particleSettings = [{id:"small", num:5, fromX:0, toX:this.totalWidth, ballwidth:10, alphamax:0.9, areaHeight:.5, color:"#bf3987", fill:false}, 
+								{id:"medium", num:5, fromX:0, toX:this.totalWidth,  ballwidth:30, alphamax:0.9, areaHeight:1, color:"#bf3987", fill:true}, 
+								{id:"large", num:5, fromX:0, toX:this.totalWidth, ballwidth:200,  alphamax:0.9, areaHeight: 1, color:"#bf3987", fill:true}];
 		this.particleArray = [];
 		this.lights = [{ellipseWidth:400, ellipseHeight:100, alpha:0.6, offsetX:0, offsetY:0, color:"#bf3987"}, 
 						{ellipseWidth:350, ellipseHeight:250, alpha:0.3, offsetX:-50, offsetY:0, color:"#bf3987"}, 
@@ -73,10 +73,11 @@ var ParticleEngine = (function() {
 
 				_ParticleEngine.lights[i].elem = light;
 			}
-
+			/*
 			TweenMax.fromTo(_ParticleEngine.lights[0].elem, 10, {scaleX:1.5, x:_ParticleEngine.lights[0].elem.initX, y:_ParticleEngine.lights[0].elem.initY},{yoyo:true, repeat:-1, ease:Power1.easeInOut, scaleX:2, scaleY:0.7});
 			TweenMax.fromTo(_ParticleEngine.lights[1].elem, 12, { x:_ParticleEngine.lights[1].elem.initX, y:_ParticleEngine.lights[1].elem.initY},{delay:5, yoyo:true, repeat:-1, ease:Power1.easeInOut, scaleY:2, scaleX:2, y:_ParticleEngine.totalHeight/2-50, x:_ParticleEngine.totalWidth/2+100});
 			TweenMax.fromTo(_ParticleEngine.lights[2].elem, 8, { x:_ParticleEngine.lights[2].elem.initX, y:_ParticleEngine.lights[2].elem.initY},{delay:2, yoyo:true, repeat:-1, ease:Power1.easeInOut, scaleY:1.5, scaleX:1.5, y:_ParticleEngine.totalHeight/2, x:_ParticleEngine.totalWidth/2-200});
+			*/
 		}
 		
 		var blurFilter;
@@ -106,7 +107,7 @@ var ParticleEngine = (function() {
 					circle.ballwidth = ball.ballwidth;
 					circle.flag = ball.id;
 					_ParticleEngine.applySettings(circle, ball.fromX, ball.toX, ball.areaHeight);
-					circle.speed = 10;
+					circle.speed = 5;
 					circle.y = circle.initY;
 					circle.x = circle.initX;
 					circle.scaleX = circle.scaleY = range(0.3, 1);
