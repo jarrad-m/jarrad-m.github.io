@@ -17,6 +17,14 @@ $(document).ready(function(){
 	        window.location.hash = target;
 	    });
 	});
+
+	$('.slider').slick({
+		slidesToShow: 1,
+		dots:true,
+		centerMode: false,
+		arrows: true,
+		adaptiveHeight: false
+	});
 });
 
 ////////////////////////// PARTICLE ENGINE ////////////////////////////////////////
