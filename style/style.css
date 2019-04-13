@@ -738,6 +738,12 @@ span.highlight {
   width: 50%;
   height: auto;	   
   background-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+}
+
+.slide-inner_left:hover {
+  opacity: 0.6;
 }
 
 .slick-arrow {
@@ -754,6 +760,15 @@ span.highlight {
 #recent-work {
   background: transparent;
   box-shadow: none;
+}
+
+.showcase-overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: green;
+  z-index: 2;
+  opacity: 0.3;
 }
 @keyframes bouncy-button {
   0% {
