@@ -18,9 +18,9 @@ $(document).ready(function(){
 	    });
 	});
 
-	$('.slider').slick({
+	$('.slider-carousel').slick({
 		slidesToShow: 1,
-		dots:true,
+		dots:false,
 		centerMode: false,
 		arrows: true,
 		adaptiveHeight: false
