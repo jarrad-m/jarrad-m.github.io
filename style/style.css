@@ -690,6 +690,45 @@ span.highlight {
       height: 70px; }
     .skills-logo-container .logo-blurb h3 {
       font-size: 0.8em; } }
+
+.slider{
+  margin-top: 200px;
+  margin-bottom: 0;
+  width:100%;
+  height: 500px;
+}
+
+.slick-slide{
+  background: black;
+}
+  
+.slide-inner {
+  width:100%;
+  max-width: 866px;
+  margin: 0 auto;
+  height: 700px;
+  background: black;
+  display: flex;
+}
+
+.slide-inner_left {
+  width: 50%;
+}
+.slide-inner_right {
+  width: 50%;
+  height: auto;	   
+}
+
+.slick-arrow {
+  color: white;
+  z-index: 2;
+}
+.slick-prev {
+  left: 25px;
+}
+.slick-next{
+  right: 25px;
+}
 @keyframes bouncy-button {
   0% {
     top: 0px; }
